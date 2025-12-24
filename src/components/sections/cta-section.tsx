@@ -25,13 +25,13 @@ const CtaSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-10"
         >
-          <Link
-            href="/contact"
-            className="group relative px-14 py-7 bg-white text-black font-bold uppercase tracking-[0.2em] text-[11px] rounded-full overflow-hidden hover:scale-105 transition-all"
-          >
-            <span className="relative z-10">Initialize Project</span>
-            <div className="absolute inset-0 bg-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Link>
+            <Link
+              href="/contact"
+              className="group relative px-14 py-7 bg-white text-black font-bold uppercase tracking-[0.2em] text-[11px] rounded-full overflow-hidden hover:scale-105 transition-all"
+            >
+              <span className="relative z-10">Start an Enquiry</span>
+              <div className="absolute inset-0 bg-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
           <Link
             href="/about"
             className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors border-b border-white/0 hover:border-white pb-2"
