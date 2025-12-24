@@ -131,9 +131,10 @@ const HeroSection = () => {
             <div className="absolute inset-0 z-0">
                 <canvas ref={canvasRef} className="w-full h-full" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black" />
-                {/* Elegant Background elements */}
+                {/* Elegant Background elements matching About page */}
                 <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]" />
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20" />
             </div>
             
             <div className="relative z-10 px-6 py-20 text-center max-w-7xl mx-auto">
@@ -151,7 +152,7 @@ const HeroSection = () => {
 
                     <motion.h1 
                         variants={fadeInUp}
-                        className="text-5xl md:text-[8rem] font-bold tracking-tighter leading-[0.85] text-white"
+                        className="text-6xl md:text-[9rem] font-bold tracking-tighter leading-[0.8] text-white"
                     >
                         ENGINEERING <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400 to-purple-800">EXPERIENCES.</span>
@@ -163,20 +164,6 @@ const HeroSection = () => {
                     >
                         We architect high-performance digital ecosystems where intelligence meets human elegance.
                     </motion.p>
-
-                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-center gap-8 pt-6">
-                        <Link href="/contact">
-                            <button className="group relative px-12 py-6 bg-white text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full overflow-hidden hover:scale-105 transition-all">
-                                <span className="relative z-10">Get Started</span>
-                                <div className="absolute inset-0 bg-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                            </button>
-                        </Link>
-                        <Link href="/about">
-                            <button className="px-12 py-6 font-bold uppercase tracking-[0.2em] text-[10px] text-white/40 hover:text-white transition-colors border-b border-white/0 hover:border-white">
-                                Learn More
-                            </button>
-                        </Link>
-                    </motion.div>
                 </motion.div>
             </div>
 
