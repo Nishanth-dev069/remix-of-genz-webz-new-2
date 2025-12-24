@@ -95,22 +95,43 @@ const WorkGallerySection: React.FC = () => {
 
   return (
     <section className="py-20 bg-black text-white relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center space-y-4 mb-16">
-          <div className="inline-block">
-            <span className="text-sm font-semibold uppercase tracking-wider text-purple-400">Our Work</span>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center space-y-6 mb-24">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-block"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-purple-500 px-6 py-2 rounded-full border border-purple-500/20 bg-purple-500/5">Our Portfolio</span>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold tracking-tighter"
+            >
+              CRAFTED BY <span className="italic text-purple-500">ZYXEN.</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-white/40 max-w-2xl mx-auto text-xl font-light tracking-tight"
+            >
+              Explore our laboratory of high-performance digital ecosystems.
+            </motion.p>
+            
+            {/* --- MOBILE ONLY INSTRUCTION TEXT --- */}
+            {isTouch && (
+              <p className="text-xs text-purple-400 font-mono tracking-widest animate-pulse mt-4 uppercase">
+                (Tap to experience)
+              </p>
+            )}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold">Crafted by Zyxen</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Explore our portfolio of innovative solutions and transformative projects</p>
-          
-          {/* --- MOBILE ONLY INSTRUCTION TEXT --- */}
-          {isTouch && (
-            <p className="text-sm text-purple-400 font-medium animate-pulse mt-2">
-              (Tap on a thumbnail to see demo)
-            </p>
-          )}
         </div>
-      </div>
 
       {/* Full-width scrolling strip */}
       <div className="relative w-full overflow-hidden work-gallery-mask" style={{ marginTop: 0 }}>
