@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import SmoothTransitionsProvider from "@/components/animations/smooth-transitions";
@@ -16,6 +17,16 @@ type FormData = {
   message: string;
 };
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+};
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -25,8 +36,6 @@ export default function ContactPage() {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // toast: null | { message, type }
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,17 +51,14 @@ export default function ContactPage() {
         message: formData.message
       };
 
-      // Prefer env vars starting with NEXT_PUBLIC_ for client usage
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_p5gb8wg";
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_osddfod";
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "m1xChN43puPbSRCtJ";
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-      // show success toast (no alert)
-      setToast({ message: "Thank you — your message was sent! We will get back to you soon.", type: "success" });
+      setToast({ message: "Transmission successful. We will respond shortly.", type: "success" });
 
-      // reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -62,8 +68,7 @@ export default function ContactPage() {
       });
     } catch (err) {
       console.error("Failed to send email via EmailJS:", err);
-      // show error toast (no alert)
-      setToast({ message: "There was an error sending your message. Please try again later.", type: "error" });
+      setToast({ message: "Transmission failed. Please retry or contact us directly.", type: "error" });
     } finally {
       setIsSubmitting(false);
     }
@@ -76,47 +81,64 @@ export default function ContactPage() {
 
   return (
     <SmoothTransitionsProvider>
-      <div className="min-h-screen bg-black text-white antialiased">
+      <div className="min-h-screen bg-black text-white antialiased selection:bg-purple-500 selection:text-white">
         <Header />
         <main>
           {/* Hero */}
-          <section className="max-w-7xl mx-auto px-6 pt-32 pb-12">
-            <div className="text-center space-y-6 fade-in-up">
-              <div className="inline-block">
-                <span className="text-sm font-semibold uppercase tracking-wider text-purple-400 border border-slate-700 px-4 py-2 rounded">
-                  Contact
-                </span>
-              </div>
+          <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-32">
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]" />
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20" />
             </div>
-          </section>
-
-          {/* Info */}
-          <section className="max-w-7xl mx-auto px-6 pb-12">
-            <div className="text-center space-y-6 fade-in-up-delay-1">
-              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                Have questions? Let us know by filling out the form, and we&apos;ll be in touch!
-              </p>
-
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-gray-300">
-                <a href="mailto:contact@zyxen.in" className="smooth-transition hover:text-purple-400">
-                  contact@zyxen.in
-                </a>
-                <span className="hidden md:inline text-slate-600">|</span>
-                <a href="tel:+917013558465" className="smooth-transition hover:text-purple-400">
-                  +91 7013558465
-                </a>
-              </div>
+            
+            <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+                className="space-y-12"
+              >
+                <motion.div variants={fadeInUp} className="flex justify-center">
+                  <span className="px-5 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] font-bold tracking-[0.4em] uppercase text-purple-400">
+                    Connect with Us
+                  </span>
+                </motion.div>
+                
+                <motion.h1
+                  variants={fadeInUp}
+                  className="text-6xl md:text-[9rem] font-bold tracking-tighter leading-[0.8] text-white"
+                >
+                  INITIALIZE <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400 to-purple-800">CONTACT.</span>
+                </motion.h1>
+                
+                <motion.div variants={fadeInUp} className="flex flex-col md:flex-row items-center justify-center gap-12 pt-6">
+                  <a href="mailto:contact@zyxen.in" className="text-white/60 hover:text-white transition-colors font-mono tracking-widest text-sm">
+                    CONTACT@ZYXEN.IN
+                  </a>
+                  <div className="hidden md:block w-px h-6 bg-white/10" />
+                  <a href="tel:+917013558465" className="text-white/60 hover:text-white transition-colors font-mono tracking-widest text-sm">
+                    +91 7013558465
+                  </a>
+                </motion.div>
+              </motion.div>
             </div>
           </section>
 
           {/* Contact form */}
-          <section className="max-w-4xl mx-auto px-6 py-12">
-            <div className="border border-slate-800 rounded-xl p-8 md:p-12 bg-slate-900/30 scale-in">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="fade-in-up-delay-1">
-                    <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">
-                      Name
+          <section className="max-w-5xl mx-auto px-6 py-40">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative p-12 md:p-24 rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-xl"
+            >
+              <form onSubmit={handleSubmit} className="space-y-12">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div className="space-y-4">
+                    <label htmlFor="firstName" className="block text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 px-2">
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -125,13 +147,14 @@ export default function ContactPage() {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 smooth-transition focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                      placeholder="Identify yourself"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-8 py-5 text-white placeholder-white/20 transition-all focus:border-purple-500 focus:outline-none focus:ring-0"
                     />
                   </div>
 
-                  <div className="fade-in-up-delay-1">
-                    <label htmlFor="lastName" className="block text-sm font-medium text-white mb-2">
-                      Company/Business Name
+                  <div className="space-y-4">
+                    <label htmlFor="lastName" className="block text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 px-2">
+                      Organization
                     </label>
                     <input
                       type="text"
@@ -140,15 +163,16 @@ export default function ContactPage() {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 smooth-transition focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                      placeholder="Company name"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-8 py-5 text-white placeholder-white/20 transition-all focus:border-purple-500 focus:outline-none focus:ring-0"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="fade-in-up-delay-2">
-                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                      E-Mail
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div className="space-y-4">
+                    <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 px-2">
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -157,13 +181,14 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 smooth-transition focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                      placeholder="email@example.com"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-8 py-5 text-white placeholder-white/20 transition-all focus:border-purple-500 focus:outline-none focus:ring-0"
                     />
                   </div>
 
-                  <div className="fade-in-up-delay-2">
-                    <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-                      Phone
+                  <div className="space-y-4">
+                    <label htmlFor="phone" className="block text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 px-2">
+                      Phone Number
                     </label>
                     <input
                       type="tel"
@@ -172,14 +197,15 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 smooth-transition focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                      placeholder="+91 --- --- ----"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-8 py-5 text-white placeholder-white/20 transition-all focus:border-purple-500 focus:outline-none focus:ring-0"
                     />
                   </div>
                 </div>
 
-                <div className="fade-in-up-delay-3">
-                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                    How can we help?
+                <div className="space-y-4">
+                  <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-[0.4em] text-purple-500 px-2">
+                    Project Vision
                   </label>
                   <textarea
                     id="message"
@@ -188,29 +214,28 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full bg-transparent border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 smooth-transition focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 resize-none"
+                    placeholder="Describe the future you want to build..."
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-8 py-6 text-white placeholder-white/20 transition-all focus:border-purple-500 focus:outline-none focus:ring-0 resize-none"
                   />
                 </div>
 
-                <div className="pt-4 fade-in-up-delay-3">
+                <div className="pt-8 flex justify-center">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-purple-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-purple-700 smooth-transition hover-scale disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group relative px-20 py-7 bg-white text-black font-bold uppercase tracking-[0.2em] text-[11px] rounded-full overflow-hidden hover:scale-105 transition-all disabled:opacity-50"
                   >
-                    {isSubmitting ? "Submitting..." : "Submit Form"}
+                    <span className="relative z-10">{isSubmitting ? "TRANSMITTING..." : "INITIALIZE TRANSMISSION"}</span>
+                    <div className="absolute inset-0 bg-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   </button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </section>
-
-          <div className="py-12" />
         </main>
 
         <Footer />
 
-        {/* Toast notifications (auto-dismiss handled by the Toast component) */}
         {toast && (
           <Toast
             message={toast.message}
