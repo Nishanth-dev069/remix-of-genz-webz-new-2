@@ -20,7 +20,12 @@ export default function BlogPostPage() {
 
   useEffect(() => {
     if (post) {
-      marked.parse(post.content).then(setContentHtml);
+      const html = marked.parse(post.content);
+      if (html instanceof Promise) {
+        html.then(setContentHtml);
+      } else {
+        setContentHtml(html);
+      }
     }
   }, [post]);
 
