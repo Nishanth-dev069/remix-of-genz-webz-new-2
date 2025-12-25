@@ -22,9 +22,9 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 relative">
+    <section className="mx-auto max-w-7xl px-6 py-12 relative">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-5 pointer-events-none" />
-      <div className="mb-20 space-y-6 text-center relative z-10">
+      <div className="mb-12 space-y-6 text-center relative z-10">
         <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -40,7 +40,7 @@ const BenefitsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-7xl font-bold text-white tracking-tighter leading-[1]"
         >
-          Architected for <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400/50 to-purple-800/50 italic">Global Impact.</span>
+          Architected for <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60 italic">Global Impact.</span>
         </motion.h2>
       </div>
       <div className="grid gap-8 md:grid-cols-3 relative z-10">
