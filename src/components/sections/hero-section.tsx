@@ -132,7 +132,7 @@ const HeroSection = () => {
                 <canvas ref={canvasRef} className="w-full h-full" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black" />
                 {/* Elegant Background elements matching About page */}
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]" />
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20" />
             </div>
@@ -145,17 +145,17 @@ const HeroSection = () => {
                     className="space-y-12"
                 >
                     <motion.div variants={fadeInUp} className="flex justify-center">
-                        <span className="px-5 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-[10px] font-bold tracking-[0.4em] uppercase text-purple-400">
+                        <span className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold tracking-[0.4em] uppercase text-white/60">
                             Innovation Hub 2025
                         </span>
                     </motion.div>
-
+  
                     <motion.h1 
                         variants={fadeInUp}
-                        className="text-6xl md:text-[9rem] font-bold tracking-tighter leading-[0.8] text-white"
+                        className="text-6xl md:text-[8rem] font-bold tracking-tighter leading-[0.8] text-white"
                     >
                         ENGINEERING <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400 to-purple-800">EXPERIENCES.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-purple-400/50">EXPERIENCES.</span>
                     </motion.h1>
 
                     <motion.p 
