@@ -49,7 +49,7 @@ const featuresData: Feature[] = [
 
 const FeaturesSection = () => {
   return (
-    <div className="space-y-32 py-10 relative">
+    <div className="space-y-20 py-6 relative">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-5 pointer-events-none" />
       {featuresData.map((feature, index) => (
         <motion.div 
