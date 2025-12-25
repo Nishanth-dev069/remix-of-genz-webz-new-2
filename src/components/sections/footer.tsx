@@ -61,31 +61,36 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-semibold text-white">Pages</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <Link href="/" className="hover:text-purple-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/#crafted" className="hover:text-purple-400 transition-colors">
-                  Work
-                </Link>
-              </li>
-              <li>
-                  <Link href="/blogs" className="hover:text-purple-400 transition-colors">
-                    Blogs
+            <div className="space-y-4">
+              <h3 className="font-semibold text-white">Pages</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>
+                  <Link href="/" className="hover:text-purple-400 transition-colors">
+                    Home
                   </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-purple-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-purple-400 transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#crafted" className="hover:text-purple-400 transition-colors">
+                    Work
+                  </Link>
+                </li>
+                <li>
+                    <Link href="/blogs" className="hover:text-purple-400 transition-colors">
+                      Blogs
+                    </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-purple-400 transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
           <div className="space-y-4">
             <h3 className="font-semibold text-white">Social Media</h3>
