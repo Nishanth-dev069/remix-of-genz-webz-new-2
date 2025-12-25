@@ -22,14 +22,14 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-40 relative">
+    <section className="mx-auto max-w-7xl px-6 py-24 relative">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-5 pointer-events-none" />
-      <div className="mb-32 space-y-6 text-center relative z-10">
+      <div className="mb-20 space-y-6 text-center relative z-10">
         <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-purple-500 font-bold text-[10px] uppercase tracking-[0.5em] border border-purple-500/20 bg-purple-500/5 px-6 py-2 rounded-full inline-block"
+          className="text-white/40 font-bold text-[10px] uppercase tracking-[0.5em] border border-white/10 bg-white/5 px-6 py-2 rounded-full inline-block"
         >
           Operational Excellence
         </motion.p>
@@ -38,12 +38,12 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-[0.9]"
+          className="text-4xl md:text-7xl font-bold text-white tracking-tighter leading-[1]"
         >
-          Architected for <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-800 italic">Global Impact.</span>
+          Architected for <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400/50 to-purple-800/50 italic">Global Impact.</span>
         </motion.h2>
       </div>
-      <div className="grid gap-12 md:grid-cols-3 relative z-10">
+      <div className="grid gap-8 md:grid-cols-3 relative z-10">
         {benefits.map((benefit, i) => (
           <motion.div
             key={i}
@@ -51,18 +51,18 @@ const BenefitsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: benefit.delay }}
-            className="group relative p-12 rounded-[3rem] border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-purple-500/50 transition-all duration-500 backdrop-blur-xl"
+            className="group relative p-10 rounded-[2.5rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-500 backdrop-blur-3xl"
           >
-            <div className="absolute top-0 right-0 p-10 text-white/5 font-mono text-5xl group-hover:text-purple-500/20 transition-colors">
+            <div className="absolute top-0 right-0 p-8 text-white/5 font-mono text-4xl group-hover:text-white/10 transition-colors">
               0{i+1}
             </div>
-            <div className="space-y-8 relative z-10">
-              <h3 className="text-3xl font-bold text-white tracking-tight group-hover:text-purple-400 transition-colors leading-tight">{benefit.title}</h3>
-              <p className="text-white/40 text-lg font-light leading-relaxed">
+            <div className="space-y-6 relative z-10">
+              <h3 className="text-2xl font-bold text-white tracking-tight leading-tight">{benefit.title}</h3>
+              <p className="text-white/30 text-base font-light leading-relaxed">
                 {benefit.description}
               </p>
             </div>
-            <div className="mt-12 h-px w-16 bg-white/10 group-hover:w-full group-hover:bg-purple-500/30 transition-all duration-700" />
+            <div className="mt-10 h-px w-12 bg-white/5 group-hover:w-full group-hover:bg-white/20 transition-all duration-700" />
           </motion.div>
         ))}
       </div>
