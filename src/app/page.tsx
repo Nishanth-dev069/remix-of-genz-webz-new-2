@@ -82,9 +82,9 @@ export default function Home() {
           <main className="relative z-0">
             <HeroSection />
             <MissionSection />
-            <section className="max-w-7xl mx-auto px-6 py-20">
+            <div className="max-w-7xl mx-auto px-6">
               <FeaturesSection />
-            </section>
+            </div>
             <BenefitsSection />
             <div id="crafted">
               <WorkGallerySection />
