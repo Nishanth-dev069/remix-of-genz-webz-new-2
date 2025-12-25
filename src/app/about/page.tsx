@@ -50,7 +50,7 @@ export default function AboutPage() {
                     className="text-6xl md:text-[8rem] font-bold tracking-tighter leading-[0.8] text-white"
                   >
                     ENGINEERING <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-purple-400/50">EMOTION.</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60">EMOTION.</span>
                   </motion.h1>
                 
                 <motion.p
