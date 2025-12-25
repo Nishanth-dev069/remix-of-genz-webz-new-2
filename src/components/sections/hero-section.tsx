@@ -152,23 +152,20 @@ const HeroSection = () => {
     
                     <motion.h1 
                         variants={fadeInUp}
-                        className="text-5xl md:text-[8rem] font-bold tracking-tighter leading-[0.85] text-white"
+                        className="text-4xl md:text-[8rem] font-bold tracking-tighter leading-[0.85] text-white"
                     >
                         ENGINEERING <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-purple-600">EXPERIENCES.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-purple-500/50">EXPERIENCES.</span>
                     </motion.h1>
 
                     <motion.p 
                         variants={fadeInUp}
-                        className="text-base md:text-2xl text-white/40 max-w-3xl mx-auto leading-relaxed font-light tracking-tight px-4"
+                        className="text-sm md:text-2xl text-white/40 max-w-3xl mx-auto leading-relaxed font-light tracking-tight px-4"
                     >
                         We architect high-performance digital ecosystems where intelligence meets human elegance.
                     </motion.p>
                 </motion.div>
             </div>
-
-
-
         </section>
     );
 };
