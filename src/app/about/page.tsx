@@ -137,11 +137,11 @@ export default function AboutPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all group backdrop-blur-3xl"
+                      className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-purple-500/[0.04] hover:border-purple-500/20 transition-all group backdrop-blur-3xl"
                     >
-                      <div className="mb-8 p-4 w-fit rounded-2xl bg-black border border-white/5 group-hover:scale-110 transition-transform">{pillar.icon}</div>
+                      <div className="mb-8 p-4 w-fit rounded-2xl bg-black border border-white/5 group-hover:scale-110 group-hover:border-purple-500/30 group-hover:bg-purple-500/5 transition-all">{pillar.icon}</div>
                       <div className="space-y-4">
-                        <h3 className="text-2xl font-bold tracking-tight text-white">{pillar.title}</h3>
+                        <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-purple-300 transition-colors">{pillar.title}</h3>
                         <p className="text-white/30 font-light leading-relaxed text-base">{pillar.description}</p>
                       </div>
                     </motion.div>
